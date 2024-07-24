@@ -1,0 +1,50 @@
+\chapter*{Capitolo 5}
+\addcontentsline{toc}{chapter}{Capitolo 5}
+
+\section*{Conclusioni}
+\addcontentsline{toc}{section}{Conclusioni}
+Il progetto di sviluppare una ISA open source basata su RISC è nato nel 2010 all'Università di Berkeley e da quel momento l'utilizzo di RISC-V è diventato sempre maggiore, tanto da essere supportato sempre da più elementi hardware e sistemi operativi, diventando nel 2024 una valida scelta su cui basare un sistema di calcolo a basso costo. Recentemente nel kernel Linux è stato anche introdotto il supporto all'``hot-swapping" \cite{hwupgrade} della memoria per RISC-V, accorciando le distanze di questa architettura con la famiglia x86\_64.\\
+Negli ultimi anni produttori come SiFive e Milk-V hanno basato sistemi cluster multiprocessore (fino a 64 core) e schede a basso costo su sistemi RISC-V, utilizzate grazie al porting di Ubuntu (ed altre distribuzioni) compilato per questa architettura, rendendo così RISC-V sempre più accessibile al pubblico.\\
+È importante quindi grazie alla diffuzione sempre maggiore di questa ISA analizzare, testare e capire i problemi di sicurezza e i tipi di attacco che potrebbero interessarla.\\
+\newline
+Gli attacchi alla memoria sono sempre stati presenti nella storia della programmazione C e dei sistemi operativi, non per implementazioni specifiche legate all'hardware, ma per errori da parte dei programmatori o vulnerabilità che interessano direttamente la memoria del programma in esecuzione. Questi attacchi sono mitigabili tramite software, utilizzando soluzioni basate sul compilatore, implementazioni che che si basano sistema operativo, o tramite hardware costruendo dei meccanismi di protezione della memoria. Sono disponibili anche dei meccanismi esterni al sistema che implementano tecniche di Control Flow Integrity e analizzano il flusso d'esecuzione del programma, i salti che deve fare e le istruzioni che deve eseguire, segnalando al programma quando viene compiuta una operazione non prevista.\\
+Per avere sempre maggiore controllo su eventuali vulerabilità lato codice ovviamente la soluzione è quella di scrivere codice sicuro, usando funzioni non deprecate e librerie aggiornate.\\
+\newline
+Gli attacchi side-channel sono causati principalmente dalle ottimizzazioni che gli ingegneri studiano per incrementare le performance della CPU e sono presenti in molte architetture e tipi di processore. Un caso noto è la vulnerabilità ``Spectre" che affligge CPU AMD da molti anni e ha causato problemi enormi nell'era del Cloud Computing, dove la stessa CPU era utilizzata da più utenti e l'exploit Spectre permetteva di leggere dati privati dei processi. Questo attacco in caso di ottimizzazioni come Execution Out of Order e Speculative Execution di cui RISC-V si dota rende vulnerabile anche questa nuova architettura che dovrà implementare mitigazioni lato sistema operativo per proteggersi.\\
+\newline
+Per concludere, è possibile dire che nonostante l'ISA sia open source e quindi implementabile senza costi aggiuntivi ed aperta a tutti, è sicuramente importante porre attenzione alla sicurezza di processori basati su questa architettura che possono avere implementazioni proprietarie su dispositivi ``High end" come HPC ma anche in dispositivi constraint e sistemi embedded adatti al controllo numerico. 
+\newpage
+\section*{Appendice 1: Software sviluppato}
+\addcontentsline{toc}{section}{Appendice 1: Software sviluppato}
+Tutti i test effettuati, i compilati, gli screenshot e le demo sono disponibili online nelle repository GitHub.
+\subsection*{Repository: RISCV-Attacks}
+\addcontentsline{toc}{subsection}{Repository: RISCV-Attacks}
+Questa repository è strutturata nel modo seguente
+\begin{itemize}
+\item folder \textbf{LLM}: contiene i test fatti con i LLM Gemma e GPT3
+\item folder \textbf{PATH}: contiene dei test fatti per gli attacchi path injection
+\item folder \textbf{bin}: contiene tutti gli artefatti e compilati prodotti per i vari tipi di attacco. Ogni attacco ha una sua sottocartella dedicata
+\item folder \textbf{doc}: contiene la documentazione e le risorse relative ai processori attaccati
+\item folder \textbf{img}: contiene gli screenshot e i video demo degli attacchi
+\item folder \textbf{nginx}: contengono le prove di attacco fatte al binario NGINX
+\end{itemize}
+Fonte: \href{https://github.com/BlessedRebuS/RISCV-Attacks}{\textbf{https://github.com/BlessedRebuS/RISCV-Attacks}}
+\subsection*{Repository: RISCV-ROP-Testbed}
+\addcontentsline{toc}{subsection}{Repository: RISCV-ROP-Testbed}
+Questa repository è strutturata nel modo seguente
+\begin{itemize}
+\item folder \textbf{buffer\_overflow}: contiene i sorgenti e gli eseguibili degli attacchi buffer overflow
+\item folder \textbf{code\_reuse\_attack}: contiene i sorgenti e gli eseguibili degli attacchi teorici di return oriented programming
+\item folder \textbf{img}: contiene gli screenshot degli exploit eseguiti
+\end{itemize}
+Fonte: \href{https://github.com/BlessedRebuS/RISCV-ROP-Testbed}{\textbf{https://github.com/BlessedRebuS/RISCV-ROP-Testbed}}
+\newpage
+\section*{Ringraziamenti}
+\addcontentsline{toc}{section}{Ringraziamenti}
+Ringrazio i miei relatori, correlatori e colleghi per avermi dato l’opportunità di lavorare a questo tema di ricerca.\\
+\newline
+Vorrei inoltre ringraziare e dedicare questa tesi alla mia famiglia e alle mie persone speciali.
+\newpage
+\myemptypage
+\printbibliography
+\listoffigures
